@@ -11,32 +11,31 @@ const Admin = () => {
 
     return (
         <Container className="d-flex flex-column">
-            <Button
-                variant={"outline-dark"}
-                className="mt-4 p-2"
-                onClick={() => setTypeVisible(true)}
+            <Button variant={"outline-dark"}
+                    className="mt-4 p-2"
+            onClick={()=> setTypeVisible(true)}
             >
-                Добавить тип
+                Add type
             </Button>
-            <Button
-                variant={"outline-dark"}
-                className="mt-4 p-2"
-                onClick={() => setBrandVisible(true)}
+            <Button variant={"outline-dark"}
+                    className="mt-4 p-2"
+              onClick={()=> setBrandVisible(true)}
             >
-                Добавить бренд
+                Add brand
             </Button>
-            <Button
-                variant={"outline-dark"}
-                className="mt-4 p-2"
-                onClick={() => setDeviceVisible(true)}
+            <Button variant={"outline-dark"}
+                    className="mt-4 p-2"
+            onClick={()=> setDeviceVisible(true)}
             >
-                Добавить устройство
+                Add device
             </Button>
+            <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
             <CreateBrand show={brandVisible} onHide={() => setBrandVisible(false)}/>
             <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)}/>
-            <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
         </Container>
-    );
-};
+       );
+}
 
 export default Admin;
+
+

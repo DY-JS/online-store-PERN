@@ -90,6 +90,34 @@ module.exports = {
 }
 
 
+// User.hasOne(Basket)  //*установили cвязь один к одному(один юзер - одна корзина)
+// Basket.belongsTo(User)
+//
+// User.hasMany(Rating) //*установили cвязь один ко многим(один юзер - много рейтингов)
+// Rating.belongsTo(User)
+//
+// Basket.hasMany(BasketDevice) //*cвязь один ко многим(одна корзина - много BasketDevice(девайс в корзине))
+// BasketDevice.belongsTo(Basket)
+//
+// Type.hasMany(Device)  //*cвязь один ко многим(один тип - много Device)
+// Device.belongsTo(Type) // в device появляется typeId
+//
+// Brand.hasMany(Device)
+// Device.belongsTo(Brand) // *в device появляется brandId
+//
+// Device.hasMany(Rating)  //*cвязь один ко многим(один девайс - много Raiting)
+// Rating.belongsTo(Device)
+//
+// Device.hasMany(BasketDevice)  //*cвязь один ко многим(один девайс - много BasketDevice(девайс в корзине))
+// BasketDevice.belongsTo(Device)
+//
+// Device.hasMany(DeviceInfo)  //cвязь один ко многим(один девайс - много DeviceInfo(информация о девайсе))
+// DeviceInfo.belongsTo(Device)
+//
+// Type.belongsToMany(Brand, {through: TypeBrand})//*many-to-many
+// Brand.belongsToMany(Type, {through: TypeBrand})
+//
+
 
 
 

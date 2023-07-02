@@ -22,5 +22,9 @@ module.exports = function(role) {
     };
 }
 
-
+// {
+//     "email": "admin@gmail.com",
+//     "password": "12345",
+//     "role": "ADMIN"
+// }
 

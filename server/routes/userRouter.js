@@ -6,5 +6,6 @@ const authMiddleware = require('../middleware/authMiddleware')
 router.post('/registration', userController.registration)
 router.post('/login', userController.login)
 router.get('/auth', authMiddleware, userController.check)
+//auth проверяет ауторизацию и перезаписывает токен(создаёт новый)
 
 module.exports = router

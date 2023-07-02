@@ -8,42 +8,47 @@ import {Button} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import Container from "react-bootstrap/Container";
 import {useHistory} from 'react-router-dom'
+
 const NavBar = observer(() => {
     const {user} = useContext(Context)
     const history = useHistory()
+    // console.log("U--", user._isAuth)
 
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
     }
 
-    return (
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <NavLink style={{color:'white'}} to={SHOP_ROUTE}>КупиДевайс</NavLink>
-                {user.isAuth ?
-                    <Nav className="ml-auto" style={{color: 'white'}}>
-                        <Button
-                            variant={"outline-light"}
-                            onClick={() => history.push(ADMIN_ROUTE)}
-                        >
-                            Админ панель
-                        </Button>
-                        <Button
-                            variant={"outline-light"}
-                            onClick={() => logOut()}
-                            className="ml-2"
-                        >
-                            Выйти
-                        </Button>
-                    </Nav>
-                    :
-                    <Nav className="ml-auto" style={{color: 'white'}}>
-                        <Button variant={"outline-light"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
-                    </Nav>
-                }
-            </Container>
-        </Navbar>
+    return (<>
+            <Navbar bg="light" data-bs-theme="light">
+                <Container>
+                    <NavLink to={SHOP_ROUTE}>BuyDevice</NavLink>
+                    {user._isAuth
+                        ? <Nav className="ml-auto">
+                            <Button
+                                variant={"outline-dark"}
+                                onClick={() => history.push(ADMIN_ROUTE)}
+                            >Admin Panel</Button>
+                            <Button
+                                className="ml-3"
+                                variant={"outline-dark"}
+                                // onClick={() => history.push(LOGIN_ROUTE)}
+                                onClick={() => logOut()}
+                            >Sign out</Button>
+                        </Nav>
+                        :
+                        <Nav className="ml-auto ">
+                            <Button
+                                className="mr-2"
+                                variant={"outline-dark"}
+                                onClick={history.push(LOGIN_ROUTE)}
+                            >Sign in</Button>
+                        </Nav>
+                    }
+
+                </Container>
+            </Navbar>
+        </>
 
     );
 });

@@ -12,11 +12,6 @@ const CreateDevice = observer(({show, onHide}) => {
     const [file, setFile] = useState(null)
     const [info, setInfo] = useState([])
 
-    useEffect(() => {
-        fetchTypes().then(data => device.setTypes(data))
-        fetchBrands().then(data => device.setBrands(data))
-    }, [])
-
     const addInfo = () => {
         setInfo([...info, {title: '', description: '', number: Date.now()}])
     }
@@ -42,6 +37,12 @@ const CreateDevice = observer(({show, onHide}) => {
         createDevice(formData).then(data => onHide())
     }
 
+    useEffect(() => {
+       fetchTypes().then(data => device.setTypes(data))
+       fetchBrands().then(data => device.setBrands(data))
+
+    }, [])
+
     return (
         <Modal
             show={show}
@@ -50,13 +51,13 @@ const CreateDevice = observer(({show, onHide}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить устройство
+                    Add device
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
                     <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{device.selectedType.name || "Выберите тип"}</Dropdown.Toggle>
+                        <Dropdown.Toggle>{device.selectedType.name || "Choose type"}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.types.map(type =>
                                 <Dropdown.Item
@@ -69,7 +70,7 @@ const CreateDevice = observer(({show, onHide}) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{device.selectedBrand.name || "Выберите тип"}</Dropdown.Toggle>
+                        <Dropdown.Toggle>{device.selectedBrand.name || "Choose Brand"}</Dropdown.Toggle>
                         <Dropdown.Menu>
                             {device.brands.map(brand =>
                                 <Dropdown.Item
@@ -104,7 +105,7 @@ const CreateDevice = observer(({show, onHide}) => {
                         variant={"outline-dark"}
                         onClick={addInfo}
                     >
-                        Добавить новое свойство
+                        Add new property
                     </Button>
                     {info.map(i =>
                         <Row className="mt-4" key={i.number}>
@@ -112,14 +113,14 @@ const CreateDevice = observer(({show, onHide}) => {
                                 <Form.Control
                                     value={i.title}
                                     onChange={(e) => changeInfo('title', e.target.value, i.number)}
-                                    placeholder="Введите название свойства"
+                                    placeholder="Input new property"
                                 />
                             </Col>
                             <Col md={4}>
                                 <Form.Control
                                     value={i.description}
                                     onChange={(e) => changeInfo('description', e.target.value, i.number)}
-                                    placeholder="Введите описание свойства"
+                                    placeholder="Input prorerty description"
                                 />
                             </Col>
                             <Col md={4}>
@@ -127,7 +128,7 @@ const CreateDevice = observer(({show, onHide}) => {
                                     onClick={() => removeInfo(i.number)}
                                     variant={"outline-danger"}
                                 >
-                                    Удалить
+                                    Delete
                                 </Button>
                             </Col>
                         </Row>
