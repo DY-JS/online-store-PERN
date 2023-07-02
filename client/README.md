@@ -1,3 +1,10 @@
+Интернет магазин ULBI
+https://www.youtube.com/watch?v=H2GCkRF9eko&list=PL6DxKON1uLOFJ5_dDcX7G1osKnsBlCaaT
+
+https://github.com/utimur/online-store-full-course/blob/master/client/src/components/DeviceList.js
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
